@@ -1,0 +1,72 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+// @import 'sweetalert2/src/sweetalert2.scss';
+@import 'animate.css';
+:root {
+	--color-uno: #3c1a60;
+	--color-uno-rgb: 60,26,96;
+	--color-uno-contrast: #ffffff;
+	--color-uno-contrast-rgb: 255,255,255;
+	--color-uno-shade: #351754;
+	--color-uno-tint: #503170;
+}
+
+.color-card{
+ background-color: var(--color-uno);
+}
+
+//Tamaño icons
+.md-18 {
+    font-size: 18px;
+}
+
+.md-24 {
+    font-size: 24px;
+}
+
+.md-28 {
+    font-size: 28px;
+}
+
+.md-32 {
+    font-size: 32px;
+}
+
+.md-36 {
+    font-size: 36px;
+}
+
+.md-42 {
+    font-size: 42px;
+}
+
+.md-48 {
+    font-size: 48px;
+}
+
+.md-icon-alert {
+    font-size: 90px;
+}
+
+.littleSuccess{
+    background-color: var(--bs-success);
+    color: var(--bs-light);
+}
+.littleError{
+    background-color: var(--bs-danger);
+    color: var(--bs-light);
+}
+
+.littleWarning{
+    background-color: var(--bs-warning);
+    color: var(--bs-dark);
+}
+
+.littleInfo{
+    background-color: var(--bs-info);
+    color: var(--bs-dark);
+}
+
+.popup-littleAlert{
+  position: absolute !important;
+  bottom: 0px !important;
+}

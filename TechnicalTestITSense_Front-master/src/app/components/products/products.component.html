@@ -1,0 +1,85 @@
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+      
+        <span class="material-icons-round md-32">
+            code
+            </span>
+      </a>
+      <h5 class="mr-3"><span class="badge bg-dark"># Productos: {{this._quantityProducts}}</span></h5>
+    </div>
+   
+  </nav>
+
+
+<div class="row m-0 p-3">
+    <div class="col-md-6 col-sm-12">
+    <form [formGroup]="this.formGroup">
+        <div class="row m-o">
+            <div class="col-8 p-0">
+                <input placeholder="Ingrese el nombre producto" type="text" class="form-control is-valid" [ngClass]="{'is-valid': formGroup.valid, 'is-invalid': formGroup.invalid && formGroup.get('nameProduct').dirty}" formControlName="nameProduct" >
+                <div class="invalid-feedback">
+                    Mínimo 10 y máximo 30 caracteres.
+                  </div>                
+              </div>
+              <div class="col-4">
+                <button type="button" class="btn btn-outline-dark pl-1 pr-1 pt-1 pb-0"  [disabled]="!formGroup.valid" (click)="this.createProduct()">
+                    <span class="material-icons-round">
+                        save
+                        </span>
+                  </button>
+             </div>
+        </div>
+    </form>
+   </div>
+    <div class="col-md-6 col-sm-12 text-end text-sm-left p-0">
+        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button type="button" class="btn btn-dark" (click)="this.filterProducts(1)">Entrada</button>
+            <button type="button" class="btn btn-dark" (click)="this.filterProducts(2)">Salida</button>
+            <button type="button" class="btn btn-dark" (click)="this.filterProducts(3)">Defectuoso</button>
+            <button type="button" class="btn btn-dark" (click)="this.filterProducts(4)">Óptimo</button>
+            <button type="button" class="btn btn-dark" (click)="this.filterProducts(0)">
+                <span class="material-icons-round">
+                    clear_all
+                </span>
+                    
+            </button>
+          </div>
+    </div>
+</div>
+
+<div class="row  m-0">
+    <div class="col-md-4 col-sm-1 pb-4" *ngFor="let product of this._filteredProducts">
+        <div class="card color-card h-100">            
+            <div class="card-body">
+                <div class="row m-0 pt-2">
+                <div class="col p-0">
+                <h5><span class="badge bg-light text-dark">{{product.idProduct}}</span></h5>
+               
+                </div>
+                <div class="col p-0 text-end">
+                    
+                    <h5><span class="badge bg-light text-dark ">
+                        Entrada {{product.dateEntryProduct | date}}</span></h5>
+                </div>
+                </div>
+              
+              <h6 class="card-title text-light">{{product.nameProduct}}</h6>
+              <select [attr.data-idProduct]="product.idProduct" class="form-select mb-2" (change)="this.changeStatusProduct($event)">
+                <option  [selected]="product.idStatusProduct === status.idStatusProduct" value="{{status.idStatusProduct}}" *ngFor="let status of this._statusProduct">{{status.nameStatusProduct}}</option>
+              </select>
+
+              <div class="row m-0">
+                  <div class="col p-0">
+                    <div class="col p-0 text-end">
+                        <h5><span class="badge bg-light text-dark " *ngIf="product.dateExitProduct != null">
+                           Salida {{product.dateExitProduct | date}}</span></h5>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>
+
+
